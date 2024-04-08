@@ -106,7 +106,7 @@ class WalletPage extends StatelessWidget {
                   backgroundColor: Colors.blue,
                 ),
                 child: Text(
-                  'Setoran',
+                  'Tabungan',
                   style: TextStyle(color: Colors.black),
                 ),
               ),
@@ -310,10 +310,42 @@ class DepositPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Halaman Setoran'),
+        title: Text('Halaman Tabungan'),
       ),
-      body: Center(
-        child: Text('Ini Halaman Setoran'),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              'Saldo Anda:',
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 20.0),
+            Text(
+              'Rp. 1.000.000',
+              style: TextStyle(
+                fontSize: 20.0,
+              ),
+            ),
+            SizedBox(height: 20.0),
+            ElevatedButton(
+              onPressed: () {
+                
+              },
+              child: Text('Deposit'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                
+              },
+              child: Text('Riwayat Transaksi'),
+            ),
+          ],
+        ),
       ),
     );
   }
