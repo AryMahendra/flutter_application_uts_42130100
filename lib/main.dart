@@ -157,8 +157,76 @@ class TransactionPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Halaman Transaksi'),
       ),
-      body: Center(
-        child: Text('Ini Halaman Transaksi'),
+        body: Padding(
+        padding: EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              'Pilih Jenis Transaksi:',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 21.0),
+            ElevatedButton(
+              onPressed: () {
+                // Tambahkan logika untuk transaksi top-up
+              },
+              child: Text('Top-up'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Tambahkan logika untuk transaksi transfer
+              },
+              child: Text('Transfer'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Tambahkan logika untuk transaksi pembayaran
+              },
+              child: Text('Pembayaran'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+class TransactionItem extends StatelessWidget {
+  final String title;
+  final String amount;
+
+  TransactionItem({
+    required this.title,
+    required this.amount,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 10.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 18.0,
+            ),
+          ),
+          Text(
+            amount,
+            style: TextStyle(
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
       ),
     );
   }
