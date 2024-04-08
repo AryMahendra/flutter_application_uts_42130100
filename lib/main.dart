@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // Penambahan import ini
+import 'package:flutter/services.dart'; 
 
 void main() {
   runApp(MyApp());
@@ -29,13 +29,13 @@ class WalletPage extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.notifications),
             onPressed: () {
-              // Add notification functionality here
+              
             },
           ),
           IconButton(
             icon: Icon(Icons.settings),
             onPressed: () {
-              // Add settings functionality here
+              
             },
           ),
         ],
@@ -45,7 +45,7 @@ class WalletPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 20), // Menambahkan ruang kosong di atas gambar
+              SizedBox(height: 20), 
               Padding(
                 padding: EdgeInsets.all(8.6),
                 child: Image(
@@ -173,19 +173,19 @@ class TransactionPage extends StatelessWidget {
             SizedBox(height: 21.0),
             ElevatedButton(
               onPressed: () {
-                // Tambahkan logika untuk transaksi top-up
+                
               },
               child: Text('Top-up'),
             ),
             ElevatedButton(
               onPressed: () {
-                // Tambahkan logika untuk transaksi transfer
+                
               },
               child: Text('Transfer'),
             ),
             ElevatedButton(
               onPressed: () {
-                // Tambahkan logika untuk transaksi pembayaran
+                
               },
               child: Text('Pembayaran'),
             ),
@@ -237,14 +237,73 @@ class HistoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Halaman Riwayat'),
+        title: Text('Riwayat Transaksi'),
       ),
-      body: Center(
-        child: Text('Ini Halaman Riwayat'),
+      body: ListView.builder(
+        itemCount: transactionHistory.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(transactionHistory[index].title),
+            subtitle: Text(transactionHistory[index].date),
+            trailing: Text(
+              transactionHistory[index].amount,
+              style: TextStyle(
+                color: transactionHistory[index].type == TransactionType.income
+                    ? Colors.green
+                    : Colors.red,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          );
+        },
       ),
     );
   }
 }
+
+enum TransactionType { income, expense }
+
+class Transaction {
+  final String title;
+  final String date;
+  final String amount;
+  final TransactionType type;
+
+  Transaction({
+    required this.title,
+    required this.date,
+    required this.amount,
+    required this.type,
+  });
+}
+
+List<Transaction> transactionHistory = [
+  Transaction(
+    title: 'Top-up',
+    date: '08 April 2024',
+    amount: '+ Rp. 100.000',
+    type: TransactionType.income,
+  ),
+  Transaction(
+    title: 'Pembayaran',
+    date: '07 April 2024',
+    amount: '- Rp. 50.000',
+    type: TransactionType.expense,
+  ),
+  Transaction(
+    title: 'Transfer',
+    date: '06 April 2024',
+    amount: '- Rp. 200.000',
+    type: TransactionType.expense,
+  ),
+  Transaction(
+    title: 'Pembayaran',
+    date: '05 April 2024',
+    amount: '- Rp. 75.000',
+    type: TransactionType.expense,
+  ),
+];
+
 
 class DepositPage extends StatelessWidget {
   @override
