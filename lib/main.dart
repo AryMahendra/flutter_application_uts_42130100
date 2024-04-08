@@ -115,22 +115,6 @@ class WalletPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => WithdrawPage()),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                ),
-                child: Text(
-                  'Penarikan',
-                  style: TextStyle(color: Colors.black),
-                ),
-              ),
-              SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
                     MaterialPageRoute(builder: (context) => SettingsPage()),
                   );
                 },
@@ -313,7 +297,7 @@ class DepositPage extends StatelessWidget {
         title: Text('Halaman Tabungan'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(15.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -336,30 +320,10 @@ class DepositPage extends StatelessWidget {
               onPressed: () {
                 
               },
-              child: Text('Deposit'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                
-              },
               child: Text('Riwayat Transaksi'),
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class WithdrawPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Halaman Penarikan'),
-      ),
-      body: Center(
-        child: Text('Ini Halaman Penarikan'),
       ),
     );
   }
@@ -372,8 +336,30 @@ class SettingsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Halaman Pengaturan'),
       ),
-      body: Center(
-        child: Text('Ini Halaman Pengaturan'),
+      body: ListView(
+        children: [
+          ListTile(
+            title: Text('Notifikasi'),
+            leading: Icon(Icons.notifications),
+            onTap: () {
+              
+            },
+          ),
+          ListTile(
+            title: Text('Bahasa'),
+            leading: Icon(Icons.language),
+            onTap: () {
+              
+            },
+          ),
+          ListTile(
+            title: Text('Tentang'),
+            leading: Icon(Icons.info),
+            onTap: () {
+              
+            },
+          ),
+        ],
       ),
     );
   }
